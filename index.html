@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人社保计算软件-Web版</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function calc(){
+            //1.获取用户输入的工资
+            sal = document.getElementById("salary").value;
+            console.log(sal);//"8000"
+            salnum = parseInt(sal);
+            //2.计算
+            ylgr = salnum * 0.08;
+            ylgs = salnum * 0.2;
+
+            ylgr2 = salnum * 0.02;
+            ylgs2 = salnum * 0.06;
+
+            sygr = salnum * 0.005;
+            sygs = salnum * 0.015;
+
+            gsgr = salnum * 0;
+            gsgs = salnum * 0.005;
+
+            sygr2 = salnum * 0;
+            sygs2 = salnum * 0.008;
+
+            gjjgr = salnum * 0;
+            gjjgs = salnum * 0.12;
+
+            hjgr = ylgr + ylgr2 + sygr + gsgr + sygr2 + gjjgr;
+            hjgs = ylgs + ylgs2 + sygs + gsgs + sygs2 + gjjgs;
+
+            //3.把计算的结果放到单元格里
+            document.getElementById("ylgr").innerText = ylgr;
+            document.getElementById("ylgs").innerText = ylgs;
+
+            document.getElementById("ylgr2").innerText = ylgr2;
+            document.getElementById("ylgs2").innerText = ylgs2;
+
+            document.getElementById("sygr").innerText = sygr;
+            document.getElementById("sygs").innerText = sygs;
+
+            document.getElementById("gsgr").innerText = gsgr;
+            document.getElementById("gsgs").innerText = gsgs;
+
+            document.getElementById("sygr2").innerText = sygr2;
+            document.getElementById("sygs2").innerText = sygs2;
+
+            document.getElementById("gjjgr").innerText = gjjgr;
+            document.getElementById("gjjgs").innerText = gjjgs;
+
+            document.getElementById("hjgr").innerText = hjgr;
+            document.getElementById("hjgs").innerText = hjgs;
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">个人社保计算软件-耿兆哲开发</h2>
+    <table class="table table-bordered text-center">
+        <tr>
+            <td>工资</td>
+            <td colspan="3">
+                <input class="form-control" type="text" id="salary" placeholder="请输入您的工资">
+            </td>
+            <td>
+                <button onclick="calc()" class="btn btn-danger btn-block">计算</button>
+            </td>
+        </tr>
+        <tr class="bg-primary">
+            <td>险种</td>
+            <td>个人%</td>
+            <td>个人</td>
+            <td>公司%</td>
+            <td>公司</td>
+        </tr>
+        <tr>
+            <td>养老</td>
+            <td>8%</td>
+            <td id="ylgr"></td>
+            <td>20%</td>
+            <td id="ylgs"></td>
+        </tr>
+        <tr>
+            <td>医疗</td>
+            <td>2%</td>
+            <td id="ylgr2"></td>
+            <td>6%</td>
+            <td id="ylgs2"></td>
+        </tr>
+        <tr>
+            <td>失业</td>
+            <td>0.5%</td>
+            <td id="sygr"></td>
+            <td>1.5%</td>
+            <td id="sygs"></td>
+        </tr>
+        <tr>
+            <td>工伤</td>
+            <td></td>
+            <td id="gsgr"></td>
+            <td>0.5%</td>
+            <td id="gsgs"></td>
+        </tr>
+        <tr>
+            <td>生育</td>
+            <td></td>
+            <td id="sygr2"></td>
+            <td>0.8%</td>
+            <td id="sygs2"></td>
+        </tr>
+        <tr>
+            <td>公积金</td>
+            <td></td>
+            <td id="gjjgr"></td>
+            <td>12%</td>
+            <td id="gjjgs"></td>
+        </tr>
+        <tr>
+            <td>合计</td>
+            <td>个人合计</td>
+            <td id="hjgr"></td>
+            <td>公司合计</td>
+            <td id="hjgs"></td>
+        </tr>
+        <tr>
+            <td>总额</td>
+            <td colspan="4">
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
